@@ -8,5 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    protected $fillable = ['name', 'description', 'price','image'];
+// app/Models/Product.php
+
+protected $fillable = ['name', 'description', 'price', 'photo'];
+// protected $guarded = [];
+
 }

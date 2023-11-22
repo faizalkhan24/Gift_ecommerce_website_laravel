@@ -10,6 +10,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,8 +34,21 @@ Route::get('/shop', [ShopController::class, 'index'])->name('shop');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::get('/testimonial', [TestimonialController::class, 'index'])->name('testimonial');
 Route::get('/why', [WhyController::class, 'index'])->name('why');
+// Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+// Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+
+
+// this is for login and logout
+
+
 Route::get('/login', [UserController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
-Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
+
+// admin form 
+
+Route::prefix('admin')->group(function () {
+    Route::get('/products/create', [ProductController::class, 'create'])->name('admin.products.create');
+    Route::post('products', [ProductController::class, 'store'])->name('admin.products.store');
+});

@@ -10,5 +10,9 @@ class IndexController extends Controller
     {
         // Your controller logic goes here
         return view('index'); // Assuming you have a Blade view named 'index'
+        
     }
+    
+       
+    
 }
